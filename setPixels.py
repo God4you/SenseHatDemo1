@@ -6,10 +6,18 @@ from sense_hat import SenseHat
 
 sense = SenseHat()
 
+# Generate a random colour
+def pick_random_colour():
+  random_b = randint(0, 255)
+  random_g = randint(0, 255)
+  random_o = randint(0, 255)
+  return (random_b, random_g, random_o)
+  
 # Define some colours
-g = (0, 255, 0) # Green
+g = pick_random_colour() # Green
 b = (0, 0, 0) # Black
-o = (0, 0, 255) # Blue
+o = pick_random_colour() # Blue
+  
 # Set up where each colour will display
 creeper_pixels = [
     g, g, g, g, g, g, g, g,
@@ -26,5 +34,5 @@ creeper_pixels = [
 sense.set_pixels(creeper_pixels)
 
 while True:
-    sleep(1)
-    sense.flip_h()
+  sleep(1)
+  sense.flip_h()
