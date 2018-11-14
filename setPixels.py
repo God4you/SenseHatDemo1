@@ -14,25 +14,47 @@ def pick_random_colour():
   return (random_b, random_g, random_o)
   
 # Define some colours
-g = pick_random_colour() # Green
+g = (0, 255, 0) # Green
 b = (0, 0, 0) # Black
-o = pick_random_colour() # Blue
+o = (0, 0, 255) # Blue
+face = True
+
 while True:
-# Set up where each colour will display
-  creeper_pixels = [
-    g, g, g, g, g, g, g, g,
-    g, g, g, g, g, g, g, g,
-    g, b, b, g, g, b, b, g,
-    g, b, o, g, g, b, o, g,
-    g, g, g, b, b, g, g, g,
-    g, g, b, b, b, b, g, g,
-    g, g, b, b, b, b, g, g,
-    g, g, b, g, g, b, g, g
-  ]
+  # Set up where each colour will display
+  
+  if face == True:
+    creeper_pixels = [
+        g, g, g, g, g, g, g, g,
+        g, g, g, g, g, g, g, g,
+        g, b, b, g, g, b, b, g,
+        g, b, o, g, g, b, o, g,
+        g, g, g, b, b, g, g, g,
+        g, g, b, b, b, b, g, g,
+        g, g, b, b, b, b, g, g,
+        g, g, b, g, g, b, g, g
+    ]
+  else:
+    creeper_pixels = [
+        g, g, g, g, g, g, g, g,
+        g, g, g, g, g, g, g, g,
+        g, b, b, g, g, b, b, g,
+        g, o, b, g, g, o, b, g,
+        g, g, g, b, b, g, g, g,
+        g, g, b, b, b, b, g, g,
+        g, g, b, b, b, b, g, g,
+        g, g, b, g, g, b, g, g
+    ]
+  
+  for event in sense.stick.get_events():
+    if event.action == "pressed" and event.direction == "middle":
+      g = pick_random_colour()
+      o = pick_random_colour()
+      
 
-# Display these colours on the LED matrix
+  # Display these colours on the LED matrix
   sense.set_pixels(creeper_pixels)
-
-  while True:
-    sleep(1)
-    sense.flip_h()
+  
+  face = True if face == False else False
+  
+  sleep(1)
+  
