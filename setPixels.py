@@ -17,9 +17,9 @@ def pick_random_colour():
 g = pick_random_colour() # Green
 b = (0, 0, 0) # Black
 o = pick_random_colour() # Blue
-  
+while True:
 # Set up where each colour will display
-creeper_pixels = [
+  creeper_pixels = [
     g, g, g, g, g, g, g, g,
     g, g, g, g, g, g, g, g,
     g, b, b, g, g, b, b, g,
@@ -28,11 +28,11 @@ creeper_pixels = [
     g, g, b, b, b, b, g, g,
     g, g, b, b, b, b, g, g,
     g, g, b, g, g, b, g, g
-]
+  ]
 
 # Display these colours on the LED matrix
-sense.set_pixels(creeper_pixels)
+  sense.set_pixels(creeper_pixels)
 
-while True:
-  sleep(1)
-  sense.flip_h()
+  while True:
+    sleep(1)
+    sense.flip_h()
