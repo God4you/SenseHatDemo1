@@ -25,7 +25,7 @@ while True:
 
     # Broadcast byte encoded message to port 37020 via UDP Socket
     # .encode() converts message to bytes for udp to broadcast
-    s.sendto(temp.encode(), ('<broadcast>', 37020))
+    s.sendto(temp.encode(), ('<broadcast>', 19993))
 
     sense.show_message(temp, scroll_speed=0.05, back_colour=bg)
     sleep(1)
